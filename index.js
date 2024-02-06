@@ -13,10 +13,8 @@ app.use((_req, res, next) => {
   next();
 });
 
-// Parses the text as url encoded data
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Parses the text as json
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
@@ -28,7 +26,6 @@ app.post("/addUser", async (req, res) => {
   let newDocument = req.body;
   newDocument.date = new Date();
   let result = await collection.insertOne(newDocument);
-  console.log("rreq" + req.body);
   res.send(result).status(204);
 });
 
